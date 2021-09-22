@@ -11,7 +11,7 @@
     "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
     "postinstall": "tsc",
-    "deploy": "git add . && git commit -m Heroku && git push heroku main",
+    "deploy": "git push heroku main",
     "coverage": "jest --coverage",
     "test": "jest",
     "typecheck": "tsc",
@@ -39,6 +39,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mjml-utils": "^2.2.1",
+    "mongoose": "^6.0.7",
     "nodemailer": "^6.6.3",
     "pino": "^6.11.3",
     "pino-pretty": "^5.1.0",
@@ -65,7 +66,7 @@
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   },
-   "engines": {
+  "engines": {
     "node": ">=10.0.0"
   }
 }
