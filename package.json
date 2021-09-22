@@ -22,7 +22,6 @@
   "license": "ISC",
   "dependencies": {
     "@types/express-validator": "^3.0.0",
-    "@types/mongoose": "^5.11.97",
     "@types/nodemailer": "^6.4.4",
     "bcrypt": "^5.0.1",
     "cache-manager": "^3.4.4",
