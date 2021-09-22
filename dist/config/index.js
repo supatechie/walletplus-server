@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-process.env.NODE_ENV = 'development';
 exports.default = {
     /**
      * NODE ENVIRONMENT
@@ -13,7 +12,7 @@ exports.default = {
     /**
      * Domain url
      */
-    domain: process.env.DOMAIN,
+    domain: process.env.NODE_ENV === "production" ? process.env.SITE_DOMAIN : process.env.DOMAIN,
     /**
      * Private keys
      */

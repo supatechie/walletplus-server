@@ -42,7 +42,7 @@ const app = express_1.default();
 const server = http_1.default.createServer(app);
 const PORT = parseInt(process.env.PORT) || 5000;
 //for cross origin resource sharing
-app.use(cors_1.default({ origin: corsConfig_1.allowedDomains(), credentials: true }));
+app.use(cors_1.default({ origin: corsConfig_1.allowedDomains(), credentials: true, }));
 // parse cookies
 app.use(cookie_parser_1.default());
 // compresses all the responses

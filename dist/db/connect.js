@@ -18,12 +18,7 @@ const logger_1 = __importDefault(require("../logger"));
 const mongodbConnect = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const uri = config_1.default.mongo.mongodb_ur;
-        yield mongoose_1.default.connect(uri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: true
-        });
-        console.log('database connected');
+        yield mongoose_1.default.connect(uri);
         logger_1.default.info(`database connected on uri ${config_1.default.mongo.mongodb_ur}`);
     }
     catch (error) {

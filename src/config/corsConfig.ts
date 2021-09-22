@@ -1,11 +1,11 @@
 export const allowedDomains = () => {
     if(process.env.NODE_ENV === "production"){
         return [
-            "https://supawalletplus.herokuapp.com",
-            'https://api-supawalletplus.herokuapp.com', 
-            "api-supawalletplus.herokuapp.com",
-            "herokuapp.com",
-            "supawalletplus.herokuapp.com"]
+            "https://walletplus.supatechie.ga",
+            'https://api-walletplus.supatechie.ga', 
+            "api-walletplus.supatechie.ga",
+            "supatechie.com",
+            "walletplus.supatechie.ga"]
     }
     return ["http://localhost:3000",'localhost'] 
 }

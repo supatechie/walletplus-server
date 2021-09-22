@@ -91,13 +91,13 @@ exports.generateForgotPwdCookie = generateForgotPwdCookie;
 const clearAllCookies = (res) => {
     // for production create cookies
     if (config_1.default.environment === "production") {
-        res === null || res === void 0 ? void 0 : res.clearCookie('_my_rt_pwd', { path: '/', domain: config_1.default.domain });
+        res === null || res === void 0 ? void 0 : res.clearCookie('_w_rt_pwd', { path: '/', domain: config_1.default.domain });
         res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_at', { path: '/', domain: config_1.default.domain });
         res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_art', { path: '/', domain: config_1.default.domain });
         return;
     }
     // for development clear old data if found
-    res === null || res === void 0 ? void 0 : res.clearCookie('_my_rt_pwd');
+    res === null || res === void 0 ? void 0 : res.clearCookie('_w_rt_pwd');
     res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_at');
     res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_art');
     return;

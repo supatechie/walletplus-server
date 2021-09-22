@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "WalletPlus server side app developed in typescript, node js and mongo db",
-  "homepage": "https://api.supawalletplus.herokuapp.com/",
+  "homepage": "https://api-walletplus.supatechie.ga/",
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
