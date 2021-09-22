@@ -6,7 +6,6 @@ const mongodbConnect =  async () =>{
     try {
         const uri = config.mongo.mongodb_ur as string
         await mongoose.connect(uri)
-        console.log('database connected')
         log.info(`database connected on uri ${config.mongo.mongodb_ur}`)
     } catch (error: any) {
        console.log(error.message) 
