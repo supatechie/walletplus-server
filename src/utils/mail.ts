@@ -17,7 +17,6 @@ const mailAccountDispatcher = async(mailOptions: IMailOptions) =>{
         }
     });
     let info = await transporter.sendMail({from: mailConfig.account.user, ...mailOptions})
-    console.log(info)
     return {info}
 }
 export const mailAccount = {

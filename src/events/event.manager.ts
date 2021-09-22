@@ -23,7 +23,6 @@ EventsManager.on('save_transaction', async(payload) =>{
 })
 EventsManager.on('send_registration_mail', async(payload) =>{
     try {
-        console.log("i am about to send mail")
         const { site, privateKey } = config
         // send a welcome message to the user email
         const token = jwt.sign(
@@ -46,7 +45,6 @@ EventsManager.on('send_registration_mail', async(payload) =>{
         }
         return await mailAccount.sendMailToUser(mailPayload)
     } catch (error: any) {
-        console.log("error occurred trying to send mail", error.message)
         return { error: true, message: error.message}
     }
 })
