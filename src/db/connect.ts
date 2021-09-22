@@ -8,7 +8,7 @@ const mongodbConnect =  async () =>{
         await mongoose.connect(uri,{
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify: false
+            useFindAndModify: true
         })
         console.log('database connected')
         log.info(`database connected on uri ${config.mongo.mongodb_ur}`)
