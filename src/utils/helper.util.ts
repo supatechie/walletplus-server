@@ -36,7 +36,7 @@ export const comparePassword = async(userPassword:OptionType['userPassword'],pas
  */
 export const generateAuthCookies = (res:cookieType["res"],authToken: cookieType["authToken"], refreshToken: cookieType["authToken"]) =>{
     // for production
-    console.log(config.environment)
+    console.log(config.environment, config.domain)
     if(config.environment === "production"){
         console.log("generated cookies in prodcution")
         res?.cookie('_w_p_at', authToken, { httpOnly: false, expires: new Date(Date.now() + 180000 ), domain: config.domain, secure: false,sameSite: 'strict' });

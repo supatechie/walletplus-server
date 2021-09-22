@@ -46,7 +46,7 @@ EventsManager.on('send_registration_mail', async(payload) =>{
         }
         return await mailAccount.sendMailToUser(mailPayload)
     } catch (error: any) {
-        console.log("error occurred trying to send mail")
+        console.log("error occurred trying to send mail", error.message)
         return { error: true, message: error.message}
     }
 })
