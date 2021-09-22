@@ -1,4 +1,4 @@
-import mongoose,{FilterQuery} from 'mongoose'
+import mongoose,{FilterQuery,HookNextFunction} from 'mongoose'
 import bcrypt from 'bcrypt'
 import {IUserDocument} from '../interfaces/user.interface'
 const UserSchema = new mongoose.Schema(
@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema(
     {timestamps: true}
 )
 
-UserSchema.pre("save", async function (next: mongoose.HookNextFunction){
+UserSchema.pre("save", async function (next: HookNextFunction){
     let user = this as IUserDocument;
     if(!user.isModified("password")) return next()
     const salt = await bcrypt.genSalt(10)
