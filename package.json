@@ -10,6 +10,9 @@
     "seed-users": "ts-node -T src/db/seed.demo.users.ts",
     "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
+    "postinstall": "tsc",
+    "deploy": "git add . && git commit -m Heroku && git push heroku main",
+    "coverage": "jest --coverage",
     "test": "jest",
     "typecheck": "tsc",
     "typecheck:watch": "tsc -w"

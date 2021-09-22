@@ -4,7 +4,7 @@ import { IPointDocument } from '../../src/interfaces/point.interface'
 import { IResultType } from '../../src/interfaces/common'
 import * as pointService from '../../src/services/point.service'
 // @ts-ignore
-import { mockFunction } from '../../src/jest.helper'
+import { mockFunction } from '../jest.helper'
 jest.mock('../../src/services/point.service')
 
 describe("Testing createPoint function", () =>{
