@@ -4,7 +4,7 @@ import { ITransactionDocument } from '../../src/interfaces/transaction.interface
 import { IResultType } from '../../src/interfaces/common'
 import * as transactionService from '../../src/services/transaction.service'
 // @ts-ignore
-import { mockFunction } from '../jest.helper'
+import { mockFunction } from '../../src/jest.helper'
 jest.mock('../../src/services/transaction.service')
 
 describe("Testing createTransaction function", () =>{

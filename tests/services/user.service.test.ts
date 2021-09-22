@@ -5,7 +5,7 @@ import { IResultType } from '../../src/interfaces/common'
 import { IAuthType, IUserDocument } from '../../src/interfaces/user.interface'
 import * as userService from '../../src/services/user.service'
 // @ts-ignore
-import { mockFunction } from '../jest.helper'
+import { mockFunction } from '../../src/jest.helper'
 
 jest.mock('../../src/services/user.service',() =>{
     const originalModule = jest.requireActual('../../src/services/user.service')

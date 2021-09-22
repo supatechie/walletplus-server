@@ -4,7 +4,7 @@ import { IAccountDocument } from '../../src/interfaces/account.interface'
 import { IResultType } from '../../src/interfaces/common'
 import * as accountService from '../../src/services/account.service'
 // @ts-ignore
-import { mockFunction } from '../jest.helper'
+import { mockFunction } from '../../src/jest.helper'
 
 jest.mock('../../src/services/account.service')
 
