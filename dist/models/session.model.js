@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const SessionSchema = new mongoose_1.default.Schema({
     user: { type: mongoose_1.default.Schema.Types.ObjectId, ref: "User" },
+    meta_data: Object,
+    session: String,
     isValid: { type: Boolean, default: true },
     userAgent: { type: String }
 }, { timestamps: true });

@@ -32,13 +32,14 @@ exports.signToken = signToken;
  */
 const verifyToken = (token, securityKey) => {
     try {
-        if (!token || !securityKey)
-            return null;
+        if (!token || !securityKey) {
+            return { isValid: false, payload: null, expired: true };
+        }
         let user = jsonwebtoken_1.default.verify(token, securityKey);
-        return user;
+        return { isValid: true, payload: user, expired: false };
     }
     catch (error) {
-        return null;
+        return { isValid: false, payload: null, expired: true };
     }
 };
 exports.verifyToken = verifyToken;

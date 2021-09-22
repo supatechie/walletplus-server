@@ -9,7 +9,7 @@ exports.ISuccessResponse = {
 };
 exports.IFailedResponse = {
     error: true,
-    errors: [{ msg: "Sorry an error occurres, try again later" }],
+    message: "An error occurred",
     data: [],
     statusCode: 406
 };

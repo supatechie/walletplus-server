@@ -19,3 +19,17 @@ export const IFailedResponse:IResultType = {
     data: [],
     statusCode: 406
 }
+export type IMailOptions = {
+    from?: string;
+    to?: string;
+    bcc?: string;
+    cc?: string;
+    subject: string;
+    html: string
+}
+  
+export type IMailData = {
+    email: string;
+    htmlTemplate: string;
+    title: string;
+}

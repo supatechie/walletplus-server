@@ -1,5 +1,5 @@
 # About this project
-This is the server side implementation of a wallet aplication where users can be able to fund their wallet accounts and also earn points per each transaction from $5000 and above. This project is implemented with typescript and nodejs. The test is written in jest and the database used is mongodb with mongoose as the client. All best practices have duly been observed. I used node `events` to emit an event in the background to create the **two** user's wallet accounts, **main wallet account** & **points account**  whenever a new user creates an account. The good thing about this logic implementattion is that, it reduces the time spent creating an account while handling the wallets creation in the background with quick response back to the user to proceed. Infact, majority of the tasks such as keeping record of a user's transaction is being handled in the background with help of node js `events emitter` module to save response time.
+This is the server side implementation of a wallet aplication where users can be able to fund their wallet accounts and also earn points per each transaction from $5000 and above. This project is implemented with typescript and nodejs. The test is written in jest and the database used is mongodb with mongoose as the client. All best practices have duly been observed. I used node `events` to emit an event in the background to create the **two** user's wallet accounts, **main wallet account** & **points account**  whenever a new user creates an account. The good thing about this logic implementattion is that, it reduces the time spent creating an account while handling the wallets creation in the background with quick response back to the user to proceed. Infact, majority of the tasks such as keeping record of a user's transaction is being handled in the background with help of node js `events emitter` module to save response time. Unit & integration testing and done using jest but end to end test is not implemented.
 
 ## Features of the app include;
 
@@ -14,6 +14,13 @@ This is the server side implementation of a wallet aplication where users can be
  9. Users can view their profiles
  10. Admin users can view all users and all transaction records
  11. Sending of mail after account creation
+
+# How points are earned
+
+ 1. Transactions from **$5,000 - $10,000** earn *1%*
+ 2. Transactions from **$10,001 - $25,000** earn *2.5%*
+ 3. Transactions from **$25,0001 above** earn *5%*
+ Note: The maximum amount allowed per account is **$1,000,0000**
 
 ## Performance
 

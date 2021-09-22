@@ -98,6 +98,9 @@ export const clearAllCookies = (res: cookieType['res']) =>{
     return
 }
 
+export const caseInsensitive = (word: string) =>{
+    return {'$regex': "^" + word + "$", $options: 'i'}   
+}
 export const getDepositPoint = (amount: number) =>{
     if(amount >= 25001){
         return Math.round((0.05 * amount))

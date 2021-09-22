@@ -1,14 +1,13 @@
-import {DocumentDefinition,FilterQuery,Types,SchemaTypes, QueryOptions} from 'mongoose'
+import {DocumentDefinition,FilterQuery, QueryOptions} from 'mongoose'
 import {get, omit} from 'lodash'
 import { ISuccessResponse,IFailedResponse,IResultType } from '../interfaces/common'
 import {IUserDocument,ISessionDocument,IAuthType} from '../interfaces/user.interface'
-import log from '../logger'
 import UserModel from '../models/user.model'
 import PointModel from '../models/point.model'
 import AccountModel from '../models/account.model'
 import SessionModel from '../models/session.model'
 import { decodeToken, signToken } from '../utils/jwt.util'
-import {comparePassword} from '../utils/helper.util'
+import {comparePassword, caseInsensitive} from '../utils/helper.util'
 import config from '../config'
 import EventsManager from '../events/event.manager'
 
@@ -109,20 +108,15 @@ export const signOutUser = async (_refreshToken: string) =>{
         return false
     }
 }
+/**
+ *  find by username or email or phone
+ */
 export const validatePassword = async({username,password}:{username: string,password: string}) =>{
     try{
-        // find by username or email
-        let _user = await UserModel.find().or([{username},{email: username},{phone: username}]).exec()
-        let isValid = false
-        let user;
-        if(_user.length === 0 || _user.length > 2) return null
-        for(let i:number = 0; i < _user.length; i++){
-            const u = _user[i]
-            isValid = await comparePassword(password,u.password)
-            if(isValid){
-                user = u
-            }
-        }
+        const query = caseInsensitive(username)
+        let user = await UserModel.findOne().or([{username: query},{email: query},{phone: query}]).exec()
+        if(!user) return null
+        const isValid = await comparePassword(password,user.password)
         if(isValid) return user
         return null
     }

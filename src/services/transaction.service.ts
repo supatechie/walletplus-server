@@ -1,4 +1,4 @@
-import {DocumentDefinition,FilterQuery, QueryOptions, SchemaTypes, Types} from 'mongoose'
+import {DocumentDefinition,FilterQuery, QueryOptions, SchemaTypes} from 'mongoose'
 import { ISuccessResponse,IFailedResponse,IResultType } from '../interfaces/common'
 import { ITransactionDocument } from '../interfaces/transaction.interface'
 import TransactionModel from '../models/transaction.model'

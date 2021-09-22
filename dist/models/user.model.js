@@ -17,8 +17,11 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const UserSchema = new mongoose_1.default.Schema({
     email: { type: String, required: true, unique: true },
     username: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
-    password: { type: String, required: true }
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    role: { type: String, required: true },
+    password: { type: String, required: true },
+    phone: { type: String, required: true },
 }, { timestamps: true });
 UserSchema.pre("save", function (next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -45,6 +48,16 @@ UserSchema.methods.checkUsernameExist = function () {
     return __awaiter(this, void 0, void 0, function* () {
         let user = this;
         return yield UserModel.findOne({ username: user.username }).then(u => {
+            if (!u)
+                return false;
+            return true;
+        }).catch(e => true);
+    });
+};
+UserSchema.methods.checkPhoneExist = function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        let user = this;
+        return yield UserModel.findOne({ phone: user.phone }).then(u => {
             if (!u)
                 return false;
             return true;

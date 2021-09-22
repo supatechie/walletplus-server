@@ -12,9 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.clearAllCookies = exports.generateForgotPwdCookie = exports.generateUnlockAppCookies = exports.generateAuthCookies = exports.comparePassword = void 0;
+exports.getDepositPoint = exports.caseInsensitive = exports.clearAllCookies = exports.generateForgotPwdCookie = exports.generateUnlockAppCookies = exports.generateAuthCookies = exports.comparePassword = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const config_1 = __importDefault(require("../config/config"));
+const config_1 = __importDefault(require("../config"));
 /**
  * Compares a user's password to see if it matches
  * @param userPassword of the current user
@@ -39,13 +39,13 @@ exports.comparePassword = comparePassword;
 const generateAuthCookies = (res, authToken, refreshToken) => {
     // for production
     if (config_1.default.environment === "production") {
-        res === null || res === void 0 ? void 0 : res.cookie('_my_at', authToken, { httpOnly: false, expires: new Date(Date.now() + 180000), domain: config_1.default.domain, secure: false, sameSite: 'strict' });
-        res === null || res === void 0 ? void 0 : res.cookie('_my_art', refreshToken, { httpOnly: true, expires: new Date(Date.now() + 604800000), domain: config_1.default.domain, secure: false, sameSite: 'strict' });
+        res === null || res === void 0 ? void 0 : res.cookie('_w_p_at', authToken, { httpOnly: false, expires: new Date(Date.now() + 180000), domain: config_1.default.domain, secure: false, sameSite: 'strict' });
+        res === null || res === void 0 ? void 0 : res.cookie('_w_p_art', refreshToken, { httpOnly: true, expires: new Date(Date.now() + 604800000), domain: config_1.default.domain, secure: false, sameSite: 'strict' });
         return;
     }
     // for development
-    res === null || res === void 0 ? void 0 : res.cookie('_my_at', authToken, { httpOnly: false, expires: new Date(Date.now() + 180000), secure: false });
-    res === null || res === void 0 ? void 0 : res.cookie('_my_art', refreshToken, { httpOnly: true, expires: new Date(Date.now() + 604800000), secure: false });
+    res === null || res === void 0 ? void 0 : res.cookie('_w_p_at', authToken, { httpOnly: false, expires: new Date(Date.now() + 180000), secure: false });
+    res === null || res === void 0 ? void 0 : res.cookie('_w_p_art', refreshToken, { httpOnly: false, expires: new Date(Date.now() + 604800000), secure: false });
     return;
 };
 exports.generateAuthCookies = generateAuthCookies;
@@ -92,14 +92,33 @@ const clearAllCookies = (res) => {
     // for production create cookies
     if (config_1.default.environment === "production") {
         res === null || res === void 0 ? void 0 : res.clearCookie('_my_rt_pwd', { path: '/', domain: config_1.default.domain });
-        res === null || res === void 0 ? void 0 : res.clearCookie('_my_at', { path: '/', domain: config_1.default.domain });
-        res === null || res === void 0 ? void 0 : res.clearCookie('_my_art', { path: '/', domain: config_1.default.domain });
+        res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_at', { path: '/', domain: config_1.default.domain });
+        res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_art', { path: '/', domain: config_1.default.domain });
         return;
     }
     // for development clear old data if found
-    res === null || res === void 0 ? void 0 : res.clearCookie('_z_e_v_o_rt_pwd');
-    res === null || res === void 0 ? void 0 : res.clearCookie('_z_e_vo_at');
-    res === null || res === void 0 ? void 0 : res.clearCookie('_z_e_vo_art');
+    res === null || res === void 0 ? void 0 : res.clearCookie('_my_rt_pwd');
+    res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_at');
+    res === null || res === void 0 ? void 0 : res.clearCookie('_w_p_art');
     return;
 };
 exports.clearAllCookies = clearAllCookies;
+const caseInsensitive = (word) => {
+    return { '$regex': "^" + word + "$", $options: 'i' };
+};
+exports.caseInsensitive = caseInsensitive;
+const getDepositPoint = (amount) => {
+    if (amount >= 25001) {
+        return Math.round((0.05 * amount));
+    }
+    else if (amount >= 10001) {
+        return Math.round((0.025 * amount));
+    }
+    else if (amount >= 5000) {
+        return Math.round((0.01 * amount));
+    }
+    else {
+        return 0;
+    }
+};
+exports.getDepositPoint = getDepositPoint;

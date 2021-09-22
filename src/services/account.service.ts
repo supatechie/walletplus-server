@@ -1,10 +1,10 @@
-import mongoose,{DocumentDefinition,FilterQuery,Types,SchemaTypes} from 'mongoose'
+import {DocumentDefinition} from 'mongoose'
 import { ISuccessResponse,IFailedResponse,IResultType } from '../interfaces/common'
 import { IAccountDocument } from '../interfaces/account.interface'
 import AccountModel from '../models/account.model'
 import UserModel from '../models/user.model'
 import EventsManager from '../events/event.manager'
-import { getDepositPoint } from '../utils/helper.util'
+import { getDepositPoint, caseInsensitive} from '../utils/helper.util'
 
 type ISendPayload = {
     userId: string;
@@ -126,7 +126,7 @@ export const updateAccountPin = async(userId: string, pin: number) =>{
         }
         const currentBalance = balance - amount
         // get the receiver
-        let user = await UserModel.findOne({email})
+        let user = await UserModel.findOne({email: caseInsensitive(email) })
         if(!user){
             return {...IFailedResponse, message: "No user found",statusCode: 404}
         }

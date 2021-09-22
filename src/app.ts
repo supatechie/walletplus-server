@@ -32,10 +32,10 @@ app.use(urlencoded({extended: false}))
 // mongo db connection 
 mongodbConnect()
 // all routes
-app.use(`${config.api}`,userRoute)
-app.use(`${config.api}`,accountRoute)
-app.use(`${config.api}`,transactionRoute)
-app.use(`${config.api}`,pointRoute)
+app.use(`${config.site.apiPath}`,userRoute)
+app.use(`${config.site.apiPath}`,accountRoute)
+app.use(`${config.site.apiPath}`,transactionRoute)
+app.use(`${config.site.apiPath}`,pointRoute)
 
 server.listen(PORT, () => {
     log.info(`Server running on url http://localhost:${PORT}`)

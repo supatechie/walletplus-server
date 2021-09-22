@@ -13,20 +13,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const config_1 = __importDefault(require("../config/config"));
+const config_1 = __importDefault(require("../config"));
 const logger_1 = __importDefault(require("../logger"));
 const mongodbConnect = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const uri = config_1.default.mongodb_ur;
+        const uri = config_1.default.mongo.mongodb_ur;
         yield mongoose_1.default.connect(uri, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useFindAndModify: true
         });
-        logger_1.default.info(`database connected on uri ${config_1.default.mongodb_ur}`);
+        console.log('database connected');
+        logger_1.default.info(`database connected on uri ${config_1.default.mongo.mongodb_ur}`);
     }
     catch (error) {
-        logger_1.default.error(error.message);
-        process.exit(1);
+        console.log(error.message);
+        //    process.exit(0)
     }
 });
 exports.default = mongodbConnect;
