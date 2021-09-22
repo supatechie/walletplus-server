@@ -9,7 +9,7 @@
     "seed-admin": "ts-node -T src/db/seed.demo.admin.ts",
     "seed-users": "ts-node -T src/db/seed.demo.users.ts",
     "dev": "nodemon src/app.ts",
-    "build": "tsc -p .",
+    "build": "rimraf dist/ && tsc -p . && copyfiles -u 1 /src/**/*.html  dist/",
     "postinstall": "tsc",
     "deploy": "git push heroku main",
     "coverage": "jest --coverage",
@@ -61,6 +61,7 @@
     "@types/yup": "^0.29.12",
     "jest": "^27.2.1",
     "nodemon": "^2.0.9",
+    "rimraf": "^3.0.2",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
