@@ -19,9 +19,7 @@ const app: Application = express()
 const server: Server = http.createServer(app)
 const PORT = parseInt(process.env.PORT as any) || 5000
 //for cross origin resource sharing
-console.log(process.env.NODE_ENV)
-console.log(allowedDomains())
-app.use(cors({origin: true,credentials: true, }))
+app.use(cors({origin: allowedDomains(),credentials: true, }))
 // parse cookies
 app.use(cookieParser())
 // compresses all the responses
