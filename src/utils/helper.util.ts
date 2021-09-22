@@ -86,13 +86,13 @@ export const generateForgotPwdCookie = (res:cookieType["res"],token: cookieType[
 export const clearAllCookies = (res: cookieType['res']) =>{
     // for production create cookies
     if(config.environment === "production"){
-        res?.clearCookie('_my_rt_pwd',{path: '/',domain: config.domain});
+        res?.clearCookie('_w_rt_pwd',{path: '/',domain: config.domain});
         res?.clearCookie('_w_p_at',{path: '/',domain: config.domain});
         res?.clearCookie('_w_p_art',{path: '/',domain: config.domain});
         return
     }
     // for development clear old data if found
-    res?.clearCookie('_my_rt_pwd');
+    res?.clearCookie('_w_rt_pwd');
     res?.clearCookie('_w_p_at');
     res?.clearCookie('_w_p_art');
     return

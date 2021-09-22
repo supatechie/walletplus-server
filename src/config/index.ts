@@ -10,7 +10,7 @@ export default {
   /**
    * Domain url
    */
-  domain:  process.env.DOMAIN,
+  domain:  process.env.NODE_ENV === "production" ? process.env.SITE_DOMAIN : process.env.DOMAIN,
   /**
    * Private keys
    */

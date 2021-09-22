@@ -1,4 +1,4 @@
-import jwt, { Jwt } from "jsonwebtoken"
+import jwt from "jsonwebtoken"
 
 /**
  * Receives and payoad and sign return a token
@@ -42,7 +42,7 @@ export const decodeToken = (token:string) =>{
     try {
         let payload = jwt.decode(token)
         return {isValid: true, payload, expired: false}
-    } catch (error) {
+    } catch (error: any) {
         return {isValid: false, payload: null, expired: error.message === "jwt expired"}
     }
 }
